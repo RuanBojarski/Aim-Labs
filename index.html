@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da cobrinha</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh; /* Ocupa a altura total da viewport */
+            margin: 0;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d); /* Gradiente de fundo */
+            font-family: 'Press Start 2P', cursive; /* Fonte retrô (precisa ser importada) */
+            color: #ecf0f1; /* Cor do texto padrão */
+            overflow: hidden; /* Evita barras de rolagem desnecessárias */
+        }
+
+        /* Importa a fonte retro do Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+        h1 {
+            color: #27ae60; /* Verde vibrante */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        #game-container {
+            background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente para o container */
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.4); /* Brilho neon verde */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #score-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            color: #ecf0f1;
+        }
+
+        #score {
+            color: #2ecc71; /* Verde esmeralda */
+            font-weight: bold;
+        }
+
+        #speed-display {
+            color: #3498db; /* Azul vibrante */
+            font-weight: bold;
+        }
+
+        canvas {
+            border: 5px solid #2ecc71; /* Borda neon verde */
+            background-color: #0d1a2b; /* Fundo escuro do canvas para contraste */
+            box-shadow: 0 0 15px rgba(46, 204, 113, 0.7); /* Brilho extra na borda do canvas */
+            border-radius: 5px; /* Bordas levemente arredondadas */
+        }
+
+        /* Adicionando um efeito de grade ao canvas, usando um pseudo-elemento */
+        canvas::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(0deg, transparent 24%, rgba(0, 255, 0, 0.1) 25%, rgba(0, 255, 0, 0.1) 26%, transparent 27%, transparent 74%, rgba(0, 255, 0, 0.1) 75%, rgba(0, 255, 0, 0.1) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(0, 255, 0, 0.1) 25%, rgba(0, 255, 0, 0.1) 26%, transparent 27%, transparent 74%, rgba(0, 255, 0, 0.1) 75%, rgba(0, 255, 0, 0.1) 76%, transparent 77%, transparent);
+            background-size: 20px 20px; /* Ajuste para o tamanho da sua grade */
+            pointer-events: none; /* Permite interagir com o canvas abaixo */
+        }
+    </style>
+</head>
+<body>
+    <h1>Jogo da cobrinha
+    </h1>
+    <div id="game-container">
+        <div id="score-container">
+            <span id="score">SCORE: 0</span>
+            <span id="speed-display">SPEED: 8 FPS</span>
+        </div>
+        <canvas id="gameCanvas" width="600" height="600"></canvas>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html>
